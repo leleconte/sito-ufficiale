@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Cars Around The World</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: #fff;
+  text-align: center;
+}
+
+header {
+  background: #000;
+  padding: 20px;
+  border-bottom: 2px solid #444;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #444;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #666;
+}
+
+.container {
+  padding: 30px;
+}
+
+.car {
+  display: inline-block;
+  width: 240px;
+  margin: 12px;
+  padding: 15px;
+  background: #222;
+  border-radius: 10px;
+}
+
+.car img {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1 id="brandTitle"></h1>
+  <button onclick="window.location.href='index.html'">
+    ⬅ Torna ai marchi
+  </button>
+</header>
+
+<div class="container" id="cars"></div>
+
+<script>
+const cars = {
+  Albany: ["Buccaneer","Emperor","Hermes","Manana","Primo"],
+  Annis: ["Elegy RH8","Elegy Retro","Savestra"],
+  Benefactor: ["Schafter","Stirling GT","Feltzer","Dubsta"],
+  BF: ["Bifta","Injection"],
+  Bravado: ["Banshee","Buffalo","Gauntlet"],
+  Canis: ["Bodhi","Freecrawler"],
+  Declasse: ["Sabre Turbo","Voodoo","Impaler"],
+  Dewbauchee: ["Rapid GT","Specter","Massacro"],
+  Dinka: ["Blista","Jester","Sugoi"],
+  Enus: ["Cognoscenti","Paragon R","Windsor"],
+  Gallivanter: ["Baller"],
+  Grotti: ["Cheetah","Turismo R","Furia","Itali RSX"],
+  Imponte: ["Phoenix","Duke O'Death"],
+  Invetero: ["Coquette","Coquette D10"],
+  Karin: ["Futo","Sultan","BeeJay XL"],
+  Lampadati: ["Casco","Michelli GT"],
+  Maibatsu: ["Penumbra"],
+  Obey: ["9F","Tailgater","Omnis"],
+  Ocelot: ["Jackal","Pariah","XA-21"],
+  Overflod: ["Entity XF","Autarch"],
+  Pegassi: ["Infernus","Zentorno","Osiris","Tempesta"],
+  Pfister: ["Comet","Neon","Growler"],
+  Progen: ["T20","Emerus"],
+  Truffade: ["Adder","Thrax"],
+  Übermacht: ["Sentinel","Rebla GTS","Zion"],
+  Vapid: ["Dominator","Flash GT","Ellie"],
+  Vulcar: ["Warrener"],
+  Weeny: ["Issi"],
+  Western: ["Daemon","Zombie"]
+};
+
+const params = new URLSearchParams(window.location.search);
+const brand = params.get("brand");
+
+document.getElementById("brandTitle").textContent =
+  "Cars Around The World – " + brand;
+
+const container = document.getElementById("cars");
+
+if (cars[brand]) {
+  cars[brand].forEach(model => {
+    const div = document.createElement("div");
+    div.className = "car";
+
+    const title = document.createElement("h3");
+    title.textContent = model;
+
+    const img = document.createElement("img");
+    img.src =
+      "https://via.placeholder.com/400x200?text=" +
+      encodeURIComponent(model);
+
+    div.appendChild(title);
+    div.appendChild(img);
+    container.appendChild(div);
+  });
+} else {
+  container.textContent = "Nessun veicolo trovato.";
+}
+</script>
+
+</body>
+</html>
