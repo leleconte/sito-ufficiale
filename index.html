@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -21,13 +21,11 @@
             scroll-behavior: smooth;
         }
 
-        /* Navigazione */
         nav {
             background: rgba(0,0,0,0.9);
             padding: 20px 50px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: center;
             border-bottom: 1px solid #333;
             position: sticky;
             top: 0;
@@ -37,16 +35,15 @@
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             color: var(--gold);
             text-transform: uppercase;
         }
 
-        /* Hero Section */
         .hero {
-            height: 60vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(10,10,10,1)), 
-                        url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=1920');
+            height: 40vh;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(10,10,10,1)), 
+                        url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1920');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -54,31 +51,22 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 20px;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-        }
-
-        /* Sezione Storia */
         .story-section {
-            padding: 60px 10%;
+            padding: 40px 10%;
             background: var(--card-bg);
             text-align: center;
             border-bottom: 1px solid #222;
         }
 
-        .story-section h2 { color: var(--gold); margin-bottom: 20px; }
-        .story-section p { color: var(--text-dim); max-width: 800px; margin: 0 auto; line-height: 1.8; }
+        .story-section p { color: var(--text-dim); max-width: 800px; margin: 0 auto; line-height: 1.6; }
 
-        /* Contenitore Grid */
         .container {
-            padding: 50px 5%;
-            max-width: 1200px;
+            padding: 40px 5%;
+            max-width: 1400px;
             margin: auto;
+            min-height: 600px;
         }
 
         .section-title {
@@ -86,115 +74,127 @@
             margin-bottom: 40px;
             font-size: 2rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            color: var(--gold);
         }
 
-        /* Card dei Marchi e delle Auto */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 25px;
         }
 
         .card {
             background: var(--card-bg);
             border: 1px solid #222;
-            border-radius: 4px;
-            padding: 30px;
+            padding: 0;
             text-align: center;
-            transition: all 0.4s ease;
+            transition: 0.3s;
             cursor: pointer;
-            position: relative;
+            border-radius: 8px;
             overflow: hidden;
         }
 
         .card:hover {
             border-color: var(--gold);
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
         }
 
-        .card h3 {
-            margin: 0;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
+        .brand-card { padding: 40px 20px; }
+
+        .car-img-container {
+            width: 100%;
+            height: 180px;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
+
+        .car-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .card:hover img { transform: scale(1.1); }
+
+        .car-info { padding: 15px; }
 
         .btn-back {
             display: none;
             background: var(--gold);
             color: black;
             border: none;
-            padding: 10px 25px;
-            border-radius: 2px;
+            padding: 12px 24px;
             cursor: pointer;
             font-weight: bold;
             margin-bottom: 30px;
-            text-transform: uppercase;
-        }
-
-        .car-card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
             border-radius: 4px;
-            margin-bottom: 15px;
-            filter: grayscale(30%);
-            transition: 0.3s;
         }
-
-        .car-card:hover img { filter: grayscale(0%); }
 
         footer {
-            padding: 40px;
+            padding: 30px;
             text-align: center;
             color: #444;
-            font-size: 0.8rem;
             border-top: 1px solid #222;
         }
     </style>
 </head>
 <body>
 
-<nav>
-    <div class="logo">Cars Around The World</div>
-</nav>
+<nav><div class="logo">Cars Around The World</div></nav>
 
 <div class="hero">
-    <h1>L'Eccellenza in Movimento</h1>
-    <p>La selezione più esclusiva dei migliori marchi internazionali.</p>
+    <h1>Elite Automotive Group</h1>
+    <p>La tua destinazione per il lusso su strada.</p>
 </div>
 
 <section class="story-section">
-    <h2>La Nostra Eredità</h2>
-    <p>
-        Nata dalla passione di collezionisti visionari, **Cars Around The World** non è solo una concessionaria, ma un punto di riferimento per chi cerca l'inarrivabile. Da oltre vent'anni selezioniamo capolavori d'ingegneria, portando su strada il perfetto equilibrio tra lusso estremo e prestazioni brute. Ogni vettura nella nostra collezione racconta una storia di libertà e potenza.
-    </p>
+    <p><i>"Dal 1998, selezioniamo solo il meglio dell'ingegneria mondiale. Ogni nostra auto è un pezzo di storia."</i></p>
 </section>
 
 <div class="container">
-    <button class="btn-back" id="backBtn" onclick="showBrands()">← Torna ai Marchi</button>
+    <button class="btn-back" id="backBtn" onclick="showBrands()">← TORNA AI MARCHI</button>
     <h2 class="section-title" id="mainTitle">I Nostri Marchi</h2>
-    
-    <div id="displayGrid" class="grid">
-        </div>
+    <div id="displayGrid" class="grid"></div>
 </div>
 
-<footer>
-    &copy; 2026 Cars Around The World. Tutti i diritti riservati.
-</footer>
+<footer>&copy; 2026 Cars Around The World</footer>
 
 <script>
-const data = {
+const carData = {
     Albany: ["Buccaneer","Emperor","Hermes","Manana","Primo"],
     Annis: ["Elegy RH8","Elegy Retro","Savestra"],
     Benefactor: ["Schafter","Stirling GT","Feltzer","Dubsta"],
+    BF: ["Bifta","Injection"],
     Bravado: ["Banshee","Buffalo","Gauntlet"],
+    Canis: ["Bodhi","Freecrawler"],
+    Cheval: ["Picador","Taipan"],
+    Declasse: ["Sabre Turbo","Voodoo","Impaler"],
+    Dewbauchee: ["Rapid GT","Specter","Massacro"],
+    Dinka: ["Blista","Jester","Sugoi"],
+    Enus: ["Cognoscenti","Paragon R","Windsor"],
+    Gallivanter: ["Baller"],
     Grotti: ["Cheetah","Turismo R","Furia","Itali RSX"],
+    Imponte: ["Phoenix","Duke O'Death"],
+    Invetero: ["Coquette","Coquette D10"],
+    Karin: ["Futo","Sultan","BeeJay XL"],
+    Lampadati: ["Casco","Michelli GT"],
+    Maibatsu: ["Penumbra"],
+    Obey: ["9F","Tailgater","Omnis"],
+    Ocelot: ["Jackal","Pariah","XA-21"],
+    Overflod: ["Entity XF","Autarch"],
     Pegassi: ["Infernus","Zentorno","Osiris","Tempesta"],
     Pfister: ["Comet","Neon","Growler"],
+    Progen: ["T20","Emerus"],
     Truffade: ["Adder","Thrax"],
-    // ... puoi aggiungere gli altri marchi qui seguendo lo schema
+    Übermacht: ["Sentinel","Rebla GTS","Zion"],
+    Vapid: ["Dominator","Flash GT","Ellie"],
+    Vulcar: ["Warrener"],
+    Weeny: ["Issi"],
+    Western: ["Daemon","Zombie"]
 };
 
 const grid = document.getElementById('displayGrid');
@@ -206,10 +206,10 @@ function showBrands() {
     mainTitle.textContent = "I Nostri Marchi";
     backBtn.style.display = 'none';
 
-    Object.keys(data).forEach(brand => {
+    Object.keys(carData).sort().forEach(brand => {
         const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `<h3>${brand}</h3>`;
+        card.className = 'card brand-card';
+        card.innerHTML = `<h3>${brand}</h3><p style="color:var(--gold)">Esplora modelli</p>`;
         card.onclick = () => showCars(brand);
         grid.appendChild(card);
     });
@@ -220,23 +220,36 @@ function showCars(brand) {
     mainTitle.textContent = brand;
     backBtn.style.display = 'inline-block';
 
-    data[brand].forEach(model => {
+    carData[brand].forEach(model => {
         const card = document.createElement('div');
-        card.className = 'card car-card';
-        // Utilizziamo immagini reali da Unsplash per un effetto migliore (placeholder intelligenti)
-        const imgUrl = `https://source.unsplash.com/400x250/?car,${model.toLowerCase()}`;
+        card.className = 'card';
+        
+        // Generazione automatica URL immagine (Tentativo su Wiki GTA)
+        // Formattiamo il nome per la ricerca (es: "Elegy RH8" diventa "Elegy_RH8")
+        const formattedModel = model.replace(/\s+/g, '_');
+        const imgUrl = `https://www.gtabase.com/images/gta-5/vehicles/main/${model.toLowerCase().replace(/\s+/g, '-')}.jpg`;
+        const fallbackImg = "https://images.unsplash.com/photo-1542362567-b05500269774?auto=format&fit=crop&q=60&w=400";
+
         card.innerHTML = `
-            <img src="${imgUrl}" onerror="this.src='https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=400'" alt="${model}">
-            <h3>${model}</h3>
+            <div class="car-img-container">
+                <img src="${imgUrl}" 
+                     onerror="this.onerror=null;this.src='${fallbackImg}';" 
+                     alt="${model}">
+            </div>
+            <div class="car-info">
+                <h3>${model}</h3>
+            </div>
         `;
         grid.appendChild(card);
     });
-    window.scrollTo(0, 500);
+    window.scrollTo(0, 300);
 }
 
-// Inizializzazione
 showBrands();
 </script>
+
+</body>
+</html>
 
 </body>
 </html>
