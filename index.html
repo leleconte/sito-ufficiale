@@ -34,45 +34,47 @@
             z-index: -1;
         }
 
-        /* Navigazione */
+        /* Navigazione Responsiva */
         nav {
             background: rgba(0, 0, 0, 0.95);
-            padding: 25px 5%;
+            padding: 20px 5%;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column; /* Per mobile */
+            justify-content: center;
             align-items: center;
             position: fixed;
             width: 100%; top: 0;
             z-index: 1000;
             border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            gap: 15px;
+        }
+
+        @media (min-width: 768px) {
+            nav { flex-direction: row; justify-content: space-between; padding: 25px 5%; }
         }
 
         .logo-text {
             font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
             letter-spacing: 2px;
             color: #fff;
             cursor: pointer;
+            text-align: center;
         }
 
-        .logo-text span { color: var(--gold); }
-
-        .nav-links { display: flex; gap: 40px; }
+        .nav-links { display: flex; gap: 20px; }
 
         .nav-item {
             color: #eee;
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             cursor: pointer;
-            transition: 0.3s;
             background: none;
             border: none;
             font-weight: 600;
         }
-
-        .nav-item:hover { color: var(--gold); transform: translateY(-2px); }
 
         /* Modals */
         .modal {
@@ -85,33 +87,32 @@
             justify-content: center;
             align-items: center;
             backdrop-filter: blur(15px);
+            padding: 20px;
         }
 
         .modal-content {
             background: #0a0a0a;
-            padding: 50px;
+            padding: 30px;
             border-top: 3px solid var(--gold);
             max-width: 550px;
-            width: 90%;
+            width: 100%;
             text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
         }
 
-        .modal-content h4 { color: var(--gold); margin-bottom: 25px; letter-spacing: 4px; font-family: 'Cinzel', serif; }
-        .modal-content p { line-height: 1.8; color: #bbb; font-size: 1rem; font-weight: 300; }
+        .modal-content h4 { color: var(--gold); margin-bottom: 20px; letter-spacing: 3px; font-family: 'Cinzel', serif; }
+        .modal-content p { line-height: 1.6; color: #bbb; font-size: 0.9rem; }
         
         .close-btn { 
-            margin-top: 35px; 
+            margin-top: 25px; 
             background: var(--gold); 
             border: none; color: #000;
-            padding: 12px 35px; 
+            padding: 10px 30px; 
             cursor: pointer; font-weight: 800;
             text-transform: uppercase;
             font-size: 0.7rem;
-            letter-spacing: 2px;
         }
 
-        /* Hero Section */
+        /* Hero Section - Adattata per Mobile */
         .hero-section {
             height: 100vh;
             display: flex;
@@ -119,11 +120,12 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 0 10%;
         }
 
         .hero-section h1 { 
             font-family: 'Cinzel', serif;
-            font-size: 6rem; 
+            font-size: clamp(2.5rem, 10vw, 6rem); /* Si riduce su mobile */
             font-weight: 700; 
             margin-bottom: 10px; 
             background: linear-gradient(to bottom, #fff, #999);
@@ -131,57 +133,61 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .hero-section p { color: var(--gold); letter-spacing: 12px; text-transform: uppercase; font-size: 0.7rem; margin-top: -10px; }
-        .scroll-indicator { margin-top: 60px; font-size: 0.65rem; opacity: 0.4; letter-spacing: 5px; animation: pulse 2s infinite; }
+        .hero-section p { 
+            color: var(--gold); 
+            letter-spacing: clamp(4px, 2vw, 12px); 
+            text-transform: uppercase; 
+            font-size: clamp(0.5rem, 2vw, 0.7rem); 
+        }
 
-        @keyframes pulse { 0% { opacity: 0.2; } 50% { opacity: 0.7; } 100% { opacity: 0.2; } }
-
-        /* Catalogo */
+        /* Catalogo Responsivo */
         .catalogue-section {
-            padding: 120px 5% 60px 5%;
+            padding: 150px 5% 60px 5%;
             background: var(--dark);
             min-height: 100vh;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); /* Più compatto su mobile */
+            gap: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
         }
 
         .card {
             background: #0d0d0d;
             border: 1px solid #1a1a1a;
-            padding: 60px 20px;
+            padding: 30px 15px;
             text-align: center;
-            transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+            transition: 0.4s;
             cursor: pointer;
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(20px);
         }
 
         .card.visible { opacity: 1; transform: translateY(0); }
-        .card:hover { border-color: var(--gold); background: #121212; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .card:hover { border-color: var(--gold); }
 
-        .card h3 { font-size: 1.2rem; letter-spacing: 2px; font-weight: 500; text-transform: uppercase; }
-        .card span { color: var(--gold); font-size: 0.6rem; letter-spacing: 3px; display: block; margin-bottom: 15px; }
+        .card h3 { font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; }
+        .card span { color: var(--gold); font-size: 0.5rem; letter-spacing: 2px; display: block; margin-bottom: 10px; }
 
         .btn-back {
             background: transparent;
             color: var(--gold);
-            padding: 12px 40px;
+            padding: 10px 30px;
             border: 1px solid var(--gold);
             font-weight: bold;
             cursor: pointer;
-            margin-bottom: 80px;
+            margin-bottom: 50px;
             display: none;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: 0.3s;
+            font-size: 0.8rem;
         }
-        .btn-back:hover { background: var(--gold); color: #000; }
 
-        footer { padding: 80px 40px; text-align: center; color: #222; font-size: 0.65rem; letter-spacing: 4px; border-top: 1px solid #111; }
+        footer { padding: 40px 20px; text-align: center; color: #222; font-size: 0.6rem; letter-spacing: 3px; }
     </style>
 </head>
 <body>
@@ -199,32 +205,32 @@
 
 <div id="modal-storia" class="modal" onclick="closeModals()">
     <div class="modal-content" onclick="event.stopPropagation()">
-        <h4>Eredità Automobilistica</h4>
-        <p>CarsAroundTheWorld è la destinazione finale per il collezionista esigente. Una visione nata dalla passione per la perfezione meccanica e il design senza tempo. Non siamo venditori, siamo curatori di emozioni.</p>
+        <h4>Eredità</h4>
+        <p>CarsAroundTheWorld è la destinazione finale per il collezionista esigente. Una visione nata dalla passione per la perfezione meccanica e il design senza tempo.</p>
         <button class="close-btn" onclick="closeModals()">Chiudi</button>
     </div>
 </div>
 
 <div id="modal-sede" class="modal" onclick="closeModals()">
     <div class="modal-content" onclick="event.stopPropagation()">
-        <h4>Premium Deluxe Motorsport</h4>
-        <p>Visita lo showroom privato di <strong>Simeon Yetarian</strong>.<br>L'eccellenza risiede all'incrocio tra Power St. e Adam's Apple Blvd, Pillbox Hill.</p>
+        <h4>Showroom</h4>
+        <p>Visita lo showroom privato di <strong>Simeon Yetarian</strong>.<br>Situato tra Power St. e Adam's Apple Blvd, Pillbox Hill.</p>
         <button class="close-btn" onclick="closeModals()">Chiudi</button>
     </div>
 </div>
 
 <div id="modal-orari" class="modal" onclick="closeModals()">
     <div class="modal-content" onclick="event.stopPropagation()">
-        <h4>Apertura</h4>
-        <p>Aperti tutti i giorni:<br><strong>15:00 — 00:00</strong><br>Disponibili oltre l'orario ordinario eccetto cambiamenti, salvo impegni esclusivi.</p>
+        <h4>Orari</h4>
+        <p>Aperti tutti i giorni:<br><strong>15:00 — 00:00</strong><br>Oltre l'orario ordinario eccetto cambiamenti di programma.</p>
         <button class="close-btn" onclick="closeModals()">Chiudi</button>
     </div>
 </div>
 
 <div class="hero-section">
     <h1>AVANT-GARDE.</h1>
-    <p>Un'esperienza curata nei minimi dettagli</p>
-    <div class="scroll-indicator">SCORRI PER ESPLORARE</div>
+    <p>Esperienza curata nei dettagli</p>
+    <div style="margin-top: 40px; font-size: 0.6rem; opacity: 0.4; letter-spacing: 4px;">SCORRI PER IL CATALOGO</div>
 </div>
 
 <div class="catalogue-section">
@@ -277,7 +283,7 @@ function animateOnScroll() {
     const cards = document.querySelectorAll('.card');
     cards.forEach(card => {
         const top = card.getBoundingClientRect().top;
-        if (top < window.innerHeight - 50) card.classList.add('visible');
+        if (top < window.innerHeight - 30) card.classList.add('visible');
     });
 }
 window.addEventListener('scroll', animateOnScroll);
@@ -304,7 +310,7 @@ function showCars(brand) {
     carData[brand].forEach(model => {
         const card = document.createElement('div');
         card.className = 'card';
-        card.innerHTML = `<span>COLLEZIONE ${brand.toUpperCase()}</span><h3>${model}</h3>`;
+        card.innerHTML = `<span>${brand.toUpperCase()}</span><h3>${model}</h3>`;
         grid.appendChild(card);
     });
     setTimeout(animateOnScroll, 100);
