@@ -47,7 +47,6 @@
             border-bottom: 1px solid rgba(212, 175, 55, 0.15);
         }
 
-        /* Nuovo stile Logo Minimal Premium */
         .logo-text {
             font-family: 'Cinzel', serif;
             font-size: 1.5rem;
@@ -63,7 +62,7 @@
 
         .nav-item {
             color: #eee;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 3px;
             cursor: pointer;
@@ -133,7 +132,7 @@
         }
 
         .hero-section p { color: var(--gold); letter-spacing: 12px; text-transform: uppercase; font-size: 0.7rem; margin-top: -10px; }
-        .scroll-indicator { margin-top: 60px; font-size: 0.6rem; opacity: 0.4; letter-spacing: 5px; animation: pulse 2s infinite; }
+        .scroll-indicator { margin-top: 60px; font-size: 0.65rem; opacity: 0.4; letter-spacing: 5px; animation: pulse 2s infinite; }
 
         @keyframes pulse { 0% { opacity: 0.2; } 50% { opacity: 0.7; } 100% { opacity: 0.2; } }
 
@@ -192,9 +191,9 @@
 <nav>
     <div class="logo-text" onclick="window.scrollTo(0,0)">CarsAroundTheWorld<span>.</span></div>
     <div class="nav-links">
-        <button class="nav-item" onclick="openModal('storia')">The Story</button>
-        <button class="nav-item" onclick="openModal('sede')">Atelier</button>
-        <button class="nav-item" onclick="openModal('orari')">Schedule</button>
+        <button class="nav-item" onclick="openModal('storia')">Storia</button>
+        <button class="nav-item" onclick="openModal('sede')">Sede</button>
+        <button class="nav-item" onclick="openModal('orari')">Orari</button>
     </div>
 </nav>
 
@@ -202,7 +201,7 @@
     <div class="modal-content" onclick="event.stopPropagation()">
         <h4>Eredità Automobilistica</h4>
         <p>CarsAroundTheWorld è la destinazione finale per il collezionista esigente. Una visione nata dalla passione per la perfezione meccanica e il design senza tempo. Non siamo venditori, siamo curatori di emozioni.</p>
-        <button class="close-btn" onclick="closeModals()">Back</button>
+        <button class="close-btn" onclick="closeModals()">Chiudi</button>
     </div>
 </div>
 
@@ -210,32 +209,32 @@
     <div class="modal-content" onclick="event.stopPropagation()">
         <h4>Premium Deluxe Motorsport</h4>
         <p>Visita lo showroom privato di <strong>Simeon Yetarian</strong>.<br>L'eccellenza risiede all'incrocio tra Power St. e Adam's Apple Blvd, Pillbox Hill.</p>
-        <button class="close-btn" onclick="closeModals()">Back</button>
+        <button class="close-btn" onclick="closeModals()">Chiudi</button>
     </div>
 </div>
 
 <div id="modal-orari" class="modal" onclick="closeModals()">
     <div class="modal-content" onclick="event.stopPropagation()">
-        <h4>Private Viewing</h4>
-        <p>Aperti quotidianamente:<br><strong>15:00 — 00:00</strong><br>Disponibili per sessioni private oltre l'orario ordinario, salvo impegni esclusivi.</p>
-        <button class="close-btn" onclick="closeModals()">Back</button>
+        <h4>Apertura</h4>
+        <p>Aperti tutti i giorni:<br><strong>15:00 — 00:00</strong><br>Disponibili oltre l'orario ordinario eccetto cambiamenti, salvo impegni esclusivi.</p>
+        <button class="close-btn" onclick="closeModals()">Chiudi</button>
     </div>
 </div>
 
 <div class="hero-section">
     <h1>AVANT-GARDE.</h1>
-    <p>The Ultimate Curated Experience</p>
-    <div class="scroll-indicator">DESCEND TO EXPLORE</div>
+    <p>Un'esperienza curata nei minimi dettagli</p>
+    <div class="scroll-indicator">SCORRI PER ESPLORARE</div>
 </div>
 
 <div class="catalogue-section">
     <div style="text-align: center;">
-        <button class="btn-back" id="backBtn" onclick="showBrands()">← View Manufacturers</button>
+        <button class="btn-back" id="backBtn" onclick="showBrands()">← Torna ai Marchi</button>
     </div>
     <div id="mainGrid" class="grid"></div>
 </div>
 
-<footer>CARSAROUNDTHEWORLD.COM — SINCE 2026</footer>
+<footer>CARSAROUNDTHEWORLD.COM — © 2026</footer>
 
 <script>
 const carData = {
@@ -292,7 +291,7 @@ function showBrands() {
     Object.keys(carData).sort().forEach(brand => {
         const card = document.createElement('div');
         card.className = 'card';
-        card.innerHTML = `<span>MANUFACTURER</span><h3>${brand}</h3>`;
+        card.innerHTML = `<span>MARCHIO</span><h3>${brand}</h3>`;
         card.onclick = () => showCars(brand);
         grid.appendChild(card);
     });
@@ -305,7 +304,7 @@ function showCars(brand) {
     carData[brand].forEach(model => {
         const card = document.createElement('div');
         card.className = 'card';
-        card.innerHTML = `<span>${brand.toUpperCase()} COLLECTION</span><h3>${model}</h3>`;
+        card.innerHTML = `<span>COLLEZIONE ${brand.toUpperCase()}</span><h3>${model}</h3>`;
         grid.appendChild(card);
     });
     setTimeout(animateOnScroll, 100);
