@@ -22,6 +22,7 @@
             scroll-behavior: smooth;
         }
 
+        /* Hero Background */
         .hero-bg {
             position: fixed;
             top: 0; left: 0;
@@ -33,12 +34,13 @@
             z-index: -1;
         }
 
-        /* Navigazione con Barra Centrale */
+        /* Navigazione Responsiva */
         nav {
-            background: rgba(0, 0, 0, 0.98);
-            padding: 15px 5%;
-            display: grid;
-            grid-template-columns: 1fr;
+            background: rgba(0, 0, 0, 0.95);
+            padding: 20px 5%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
             position: fixed;
             width: 100%; top: 0;
@@ -48,60 +50,52 @@
         }
 
         @media (min-width: 992px) {
-            nav {
-                grid-template-columns: 280px 1fr 280px;
-                height: 80px;
+            nav { 
+                flex-direction: row; 
+                justify-content: space-between; 
+                padding: 15px 5%; 
+                height: 90px;
             }
         }
 
         .logo-text {
             font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             font-weight: 700;
             letter-spacing: 2px;
             color: #fff;
             cursor: pointer;
             text-decoration: none;
-            text-align: left;
         }
 
         .logo-text span { color: var(--gold); }
 
-        /* Stile Barra di Ricerca Centrale */
-        .search-wrapper {
+        /* Stile Barra di Ricerca */
+        .search-container {
             width: 100%;
-            display: flex;
-            justify-content: center;
+            max-width: 400px;
         }
 
-        .search-bar {
+        .search-input {
             width: 100%;
-            max-width: 450px;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 12px 25px;
-            border-radius: 4px;
+            padding: 10px 15px;
             color: white;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             letter-spacing: 1px;
-            transition: 0.4s;
             text-transform: uppercase;
+            transition: 0.3s;
         }
 
-        .search-bar:focus {
+        .search-input:focus {
             outline: none;
             border-color: var(--gold);
-            background: rgba(255,255,255,0.1);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+            background: rgba(255, 255, 255, 0.1);
         }
 
-        .nav-links { 
-            display: flex; 
-            gap: 20px; 
-            justify-content: center;
-        }
-        @media (min-width: 992px) { .nav-links { justify-content: flex-end; } }
+        .nav-links { display: flex; gap: 20px; }
 
         .nav-item {
             color: #eee;
@@ -133,13 +127,16 @@
 
         .modal-content {
             background: #0a0a0a;
-            padding: 40px;
+            padding: 30px;
             border-top: 3px solid var(--gold);
-            max-width: 500px;
+            max-width: 550px;
             width: 100%;
             text-align: center;
         }
 
+        .modal-content h4 { color: var(--gold); margin-bottom: 20px; letter-spacing: 3px; font-family: 'Cinzel', serif; }
+        .modal-content p { line-height: 1.6; color: #bbb; font-size: 0.9rem; }
+        
         .close-btn { 
             margin-top: 25px; 
             background: var(--gold); 
@@ -165,6 +162,7 @@
             font-family: 'Cinzel', serif;
             font-size: clamp(2.5rem, 10vw, 6rem);
             font-weight: 700; 
+            margin-bottom: 10px; 
             background: linear-gradient(to bottom, #fff, #999);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -172,15 +170,14 @@
 
         .hero-section p { 
             color: var(--gold); 
-            letter-spacing: 10px; 
+            letter-spacing: clamp(4px, 2vw, 12px); 
             text-transform: uppercase; 
-            font-size: 0.7rem;
-            margin-top: 10px;
+            font-size: clamp(0.5rem, 2vw, 0.7rem); 
         }
 
         /* Catalogo */
         .catalogue-section {
-            padding: 180px 5% 60px 5%;
+            padding: 150px 5% 60px 5%;
             background: var(--dark);
             min-height: 100vh;
         }
@@ -188,17 +185,17 @@
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 20px;
+            gap: 15px;
         }
 
         @media (min-width: 768px) {
-            .grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+            .grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
         }
 
         .card {
             background: #0d0d0d;
             border: 1px solid #1a1a1a;
-            padding: 45px 20px;
+            padding: 40px 15px;
             text-align: center;
             transition: 0.4s;
             cursor: pointer;
@@ -207,11 +204,11 @@
         }
 
         .card.visible { opacity: 1; transform: translateY(0); }
-        .card:hover { border-color: var(--gold); background: #111; transform: scale(1.02); }
+        .card:hover { border-color: var(--gold); background: #111; }
 
-        .card h3 { font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; margin-bottom: 10px; }
+        .card h3 { font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
         .card span { color: var(--gold); font-size: 0.55rem; letter-spacing: 2px; display: block; margin-bottom: 12px; }
-        .card .price { color: #fff; font-weight: 900; font-size: 0.9rem; letter-spacing: 1px; border: 1px solid rgba(212, 175, 55, 0.2); display: inline-block; padding: 5px 15px; margin-top: 10px; }
+        .card .price { color: #fff; font-weight: 700; margin-top: 15px; display: block; font-size: 0.85rem; }
 
         .btn-back {
             background: transparent;
@@ -223,11 +220,13 @@
             margin-bottom: 50px;
             display: none;
             text-transform: uppercase;
-            font-size: 0.7rem;
+            font-size: 0.8rem;
             letter-spacing: 2px;
+            transition: 0.3s;
         }
+        .btn-back:hover { background: var(--gold); color: #000; }
 
-        footer { padding: 60px 20px; text-align: center; color: #333; font-size: 0.6rem; letter-spacing: 4px; text-transform: uppercase; border-top: 1px solid #111; }
+        footer { padding: 60px 20px; text-align: center; color: #222; font-size: 0.6rem; letter-spacing: 3px; border-top: 1px solid #111; }
     </style>
 </head>
 <body>
@@ -237,8 +236,8 @@
 <nav>
     <div class="logo-text" onclick="showBrands()">CarsAroundTheWorld<span>.</span></div>
     
-    <div class="search-wrapper">
-        <input type="text" id="searchInput" class="search-bar" placeholder="Cerca un modello o un brand..." onkeyup="handleSearch()">
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Cerca veicolo o marchio..." oninput="handleSearch()">
     </div>
 
     <div class="nav-links">
@@ -250,15 +249,32 @@
 
 <div id="modal-storia" class="modal" onclick="closeModals()">
     <div class="modal-content" onclick="event.stopPropagation()">
-        <h4 style="color:var(--gold); font-family:'Cinzel'; letter-spacing:2px; margin-bottom:15px;">EREDITÀ</h4>
-        <p style="color:#bbb; font-size:0.9rem; line-height:1.6;">CarsAroundTheWorld è la destinazione finale per il collezionista esigente. Ogni mezzo nel nostro catalogo è una promessa di eccellenza e prestigio.</p>
+        <h4>Eredità</h4>
+        <p>CarsAroundTheWorld è la destinazione finale per il collezionista esigente. Una visione nata dalla passione per la perfezione meccanica e il design senza tempo. Ogni mezzo nel nostro catalogo è una promessa di eccellenza.</p>
+        <button class="close-btn" onclick="closeModals()">Chiudi</button>
+    </div>
+</div>
+
+<div id="modal-sede" class="modal" onclick="closeModals()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <h4>Showroom</h4>
+        <p>Visita lo showroom privato di <strong>Simeon Yetarian</strong>.<br>Situato tra Power St. e Adam's Apple Blvd, Pillbox Hill.<br>Il cuore del lusso a Los Santos.</p>
+        <button class="close-btn" onclick="closeModals()">Chiudi</button>
+    </div>
+</div>
+
+<div id="modal-orari" class="modal" onclick="closeModals()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <h4>Orari</h4>
+        <p>Aperti tutti i giorni:<br><strong>15:00 — 00:00</strong><br>Oltre l'orario ordinario eccetto cambiamenti di programma.</p>
         <button class="close-btn" onclick="closeModals()">Chiudi</button>
     </div>
 </div>
 
 <div class="hero-section">
     <h1>AVANT-GARDE.</h1>
-    <p>Ricerca la perfezione</p>
+    <p>Esperienza curata nei minimi dettagli</p>
+    <div style="margin-top: 40px; font-size: 0.6rem; opacity: 0.4; letter-spacing: 4px;">SCORRI PER IL CATALOGO</div>
 </div>
 
 <div class="catalogue-section">
@@ -271,60 +287,155 @@
 <footer>CARSAROUNDTHEWORLD.COM — © 2026</footer>
 
 <script>
-// DATABASE COMPLETO DAL LISTINO PDF
 const carData = {
-    ALBANY: [{m: "Alpha", p: "$14.900"}, {m: "Cavalcade Gen.2", p: "$11.800"}, {m: "Cavalcade XL", p: "$24.000"}, {m: "Emperor", p: "$4.900"}, {m: "Fränken Stange", p: "$24.500"}, {m: "Primo", p: "$6.680"}, {m: "V-STR", p: "$48.000"}, {m: "Washington", p: "$11.250"}],
-    ANNIS: [{m: "Elegy Retro Custom", p: "$39.900"}, {m: "Elegy RH8", p: "$36.000"}, {m: "Euros", p: "$28.000"}, {m: "Remus", p: "$22.000"}, {m: "ZR350", p: "$26.400"}],
-    BENEFACTOR: [{m: "Dubsta", p: "$30.000"}, {m: "Dubsta 6x6", p: "$55.000"}, {m: "Feltzer", p: "$40.500"}, {m: "Krieger", p: "$355.000"}, {m: "Panto", p: "$0"}, {m: "Schafter V12", p: "$33.700"}, {m: "Schafter LWB", p: "$34.800"}, {m: "Schlagen GT", p: "$117.000"}, {m: "Schwartzer", p: "$33.500"}, {m: "Stirling GT", p: "$75.000"}, {m: "Surano", p: "$32.900"}, {m: "Vourschlaghammer", p: "$31.800"}, {m: "XLS", p: "$44.500"}],
-    BF: [{m: "BF400", p: "$7.000"}, {m: "Bifta", p: "$22.000"}, {m: "Club", p: "$2.550"}, {m: "Injection", p: "$1.850"}, {m: "Raptor", p: "$16.000"}, {m: "Weevil", p: "$11.800"}],
-    BOLLOKAN: [{m: "Prairie", p: "$11.300"}],
-    BRAVADO: [{m: "Banshee 900R", p: "$42.000"}, {m: "Banshee GTS", p: "$68.000"}, {m: "Bison", p: "$1.700"}, {m: "Buffalo EVX", p: "$65.000"}, {m: "Buffalo S", p: "$22.000"}, {m: "Buffalo STX", p: "$76.000"}, {m: "Gauntlet", p: "$21.400"}, {m: "Gauntlet Hellfire", p: "$38.500"}, {m: "Greenwood", p: "$22.500"}, {m: "Rumpo", p: "$12.000"}, {m: "Rumpo Custom", p: "$40.000"}, {m: "Youga Classic", p: "$13.000"}],
-    CANIS: [{m: "Bodhi", p: "$1.750"}, {m: "Castigator", p: "$21.500"}, {m: "Freecrawler", p: "$27.000"}, {m: "Kalahari", p: "$1.000"}, {m: "Kamacho", p: "$38.000"}, {m: "Mesa", p: "$11.100"}, {m: "Mesa 4x4", p: "$36.200"}, {m: "Terminus", p: "$64.000"}],
-    CHEVAL: [{m: "Fugitive", p: "$11.000"}, {m: "Taipan", p: "$108.000"}],
-    CLASSIQUE: [{m: "Broadway", p: "$18.000"}],
-    COIL: [{m: "Brawler", p: "$35.000"}, {m: "Raiden", p: "$23.000"}, {m: "Voltic", p: "$105.000"}],
-    DECLASSE: [{m: "Burrito", p: "$13.000"}, {m: "Granger 3600XL", p: "$54.000"}, {m: "Impaler", p: "$13.200"}, {m: "Mamba", p: "$72.100"}, {m: "Premier", p: "$1.800"}, {m: "Rancher XL", p: "$11.700"}, {m: "Sabre Turbo", p: "$21.500"}, {m: "Hotring Sabre", p: "$23.000"}, {m: "Tahoma Coupe", p: "$21.400"}, {m: "Tulip", p: "$21.600"}, {m: "Vamos", p: "$21.950"}, {m: "Vigero ZX", p: "$52.000"}, {m: "Walton L35", p: "$23.300"}, {m: "Yosemite", p: "$22.000"}, {m: "Yosemite 1500", p: "$15.000"}, {m: "Yosemite Rancher", p: "$13.500"}],
-    DEWBAUCHEE: [{m: "Champion", p: "$224.000"}, {m: "JB 700", p: "$100.000"}, {m: "Seven-70", p: "$82.000"}, {m: "Vagner", p: "$175.000"}],
-    DINKA: [{m: "Akuma", p: "$11.000"}, {m: "Blista", p: "$1.700"}, {m: "Blista Kanjo", p: "$11.000"}, {m: "Chavos V6", p: "$21.100"}, {m: "Jester", p: "$69.000"}, {m: "Jester Classic", p: "$92.000"}, {m: "Jester RR", p: "$107.000"}, {m: "Postlude", p: "$1.700"}, {m: "Thrust", p: "$11.100"}, {m: "Vindicator", p: "$21.000"}],
-    DUNDREARY: [{m: "Landstalker XL", p: "$41.850"}, {m: "Regina", p: "$11.350"}],
-    EMPEROR: [{m: "ETR1", p: "$175.000"}, {m: "Vectre", p: "$67.000"}],
-    ENUS: [{m: "Deity", p: "$102.000"}, {m: "Jubilee", p: "$130.000"}, {m: "Paragon R", p: "$80.000"}, {m: "Paragon S", p: "$100.000"}, {m: "Super Diamond", p: "$73.000"}, {m: "Windsor", p: "$55.000"}, {m: "Windsor Drop", p: "$49.000"}],
-    FATHOM: [{m: "FR36", p: "$11.800"}],
-    GALLIVANTER: [{m: "Baller LE", p: "$35.000"}, {m: "Baller ST", p: "$38.000"}, {m: "Baller ST-D", p: "$64.000"}],
-    GROTTI: [{m: "Bestia GTS", p: "$107.000"}, {m: "Carbonizzare", p: "$90.000"}, {m: "Cheetah Classic", p: "$108.000"}, {m: "Furia", p: "$265.000"}, {m: "GT500", p: "$130.000"}, {m: "Itali GTO", p: "$270.000"}, {m: "Itali RSX", p: "$280.000"}, {m: "Turismo Classic", p: "$1.000.000"}, {m: "Turismo Omaggio", p: "$260.000"}, {m: "Turismo R", p: "$255.000"}, {m: "X80 Proto", p: "$240.000"}],
+    Albany: [
+        {m: "Alpha", p: "$14.900"}, {m: "Cavalcade Gen.2", p: "$11.800"}, {m: "Cavalcade XL", p: "$24.000"},
+        {m: "Emperor", p: "$4.900"}, {m: "Fränken Stange", p: "$24.500"}, {m: "Primo", p: "$6.680"},
+        {m: "V-STR", p: "$48.000"}, {m: "Washington", p: "$11.250"}
+    ],
+    Annis: [
+        {m: "Elegy Retro Custom", p: "$39.900"}, {m: "Elegy RH8", p: "$36.000"}, {m: "Euros", p: "$28.000"},
+        {m: "Remus", p: "$22.000"}, {m: "ZR350", p: "$26.400"}
+    ],
+    Benefactor: [
+        {m: "Dubsta", p: "$30.000"}, {m: "Dubsta 6x6", p: "$55.000"}, {m: "Feltzer", p: "$40.500"},
+        {m: "Krieger", p: "$355.000"}, {m: "Panto", p: "$0"}, {m: "Schafter V12", p: "$33.700"},
+        {m: "Schafter LWB", p: "$34.800"}, {m: "Schlagen GT", p: "$117.000"}, {m: "Schwartzer", p: "$33.500"},
+        {m: "Stirling GT", p: "$75.000"}, {m: "Surano", p: "$32.900"}, {m: "Vourschlaghammer", p: "$31.800"},
+        {m: "XLS", p: "$44.500"}
+    ],
+    BF: [
+        {m: "BF400", p: "$7.000"}, {m: "Bifta", p: "$22.000"}, {m: "Club", p: "$2.550"},
+        {m: "Injection", p: "$1.850"}, {m: "Raptor", p: "$16.000"}, {m: "Weevil", p: "$11.800"}
+    ],
+    Bollokan: [{m: "Prairie", p: "$11.300"}],
+    Bravado: [
+        {m: "Banshee 900R", p: "$42.000"}, {m: "Banshee GTS", p: "$68.000"}, {m: "Bison", p: "$1.700"},
+        {m: "Buffalo EVX", p: "$65.000"}, {m: "Buffalo S", p: "$22.000"}, {m: "Buffalo STX", p: "$76.000"},
+        {m: "Gauntlet", p: "$21.400"}, {m: "Gauntlet Hellfire", p: "$38.500"}, {m: "Greenwood", p: "$22.500"},
+        {m: "Rumpo", p: "$12.000"}, {m: "Rumpo Custom", p: "$40.000"}, {m: "Youga Classic", p: "$13.000"}
+    ],
+    Canis: [
+        {m: "Bodhi", p: "$1.750"}, {m: "Castigator", p: "$21.500"}, {m: "Freecrawler", p: "$27.000"},
+        {m: "Kalahari", p: "$1.000"}, {m: "Kamacho", p: "$38.000"}, {m: "Mesa", p: "$11.100"},
+        {m: "Mesa 4x4", p: "$36.200"}, {m: "Terminus", p: "$64.000"}
+    ],
+    Cheval: [{m: "Fugitive", p: "$11.000"}, {m: "Taipan", p: "$108.000"}],
+    Classique: [{m: "Broadway", p: "$18.000"}],
+    Coil: [{m: "Brawler", p: "$35.000"}, {m: "Raiden", p: "$23.000"}, {m: "Voltic", p: "$105.000"}],
+    Declasse: [
+        {m: "Burrito", p: "$13.000"}, {m: "Granger 3600XL", p: "$54.000"}, {m: "Impaler", p: "$13.200"},
+        {m: "Mamba", p: "$72.100"}, {m: "Premier", p: "$1.800"}, {m: "Rancher XL", p: "$11.700"},
+        {m: "Sabre Turbo", p: "$21.500"}, {m: "Hotring Sabre", p: "$23.000"}, {m: "Tahoma Coupe", p: "$21.400"},
+        {m: "Tulip", p: "$21.600"}, {m: "Vamos", p: "$21.950"}, {m: "Vigero ZX", p: "$52.000"},
+        {m: "Walton L35", p: "$23.300"}, {m: "Yosemite", p: "$22.000"}, {m: "Yosemite 1500", p: "$15.000"},
+        {m: "Yosemite Rancher", p: "$13.500"}
+    ],
+    Dewbauchee: [
+        {m: "Champion", p: "$224.000"}, {m: "JB 700", p: "$100.000"},
+        {m: "Seven-70", p: "$82.000"}, {m: "Vagner", p: "$175.000"}
+    ],
+    Dinka: [
+        {m: "Akuma (Moto)", p: "$11.000"}, {m: "Blista", p: "$1.700"}, {m: "Blista Kanjo", p: "$11.000"},
+        {m: "Chavos V6", p: "$21.100"}, {m: "Jester", p: "$69.000"}, {m: "Jester Classic", p: "$92.000"},
+        {m: "Jester RR", p: "$107.000"}, {m: "Postlude", p: "$1.700"}, {m: "Thrust", p: "$11.100"},
+        {m: "Vindicator", p: "$21.000"}
+    ],
+    Dundreary: [{m: "Landstalker XL", p: "$41.850"}, {m: "Regina", p: "$11.350"}],
+    Emperor: [{m: "ETR1", p: "$175.000"}, {m: "Vectre", p: "$67.000"}],
+    Enus: [
+        {m: "Deity", p: "$102.000"}, {m: "Jubilee", p: "$130.000"}, {m: "Paragon R", p: "$80.000"},
+        {m: "Paragon S", p: "$100.000"}, {m: "Super Diamond", p: "$73.000"}, {m: "Windsor", p: "$55.000"},
+        {m: "Windsor Drop", p: "$49.000"}
+    ],
+    Fathom: [{m: "FR36", p: "$11.800"}],
+    Gallivanter: [{m: "Baller LE", p: "$35.000"}, {m: "Baller ST", p: "$38.000"}, {m: "Baller ST-D", p: "$64.000"}],
+    Grotti: [
+        {m: "Bestia GTS", p: "$107.000"}, {m: "Carbonizzare", p: "$90.000"}, {m: "Cheetah Classic", p: "$108.000"},
+        {m: "Furia", p: "$265.000"}, {m: "GT500", p: "$130.000"}, {m: "Itali GTO", p: "$270.000"},
+        {m: "Itali RSX", p: "$280.000"}, {m: "Turismo Classic", p: "$1.000.000"}, {m: "Turismo Omaggio", p: "$260.000"},
+        {m: "Turismo R", p: "$255.000"}, {m: "X80 Proto", p: "$240.000"}
+    ],
     HVY: [{m: "Vetir", p: "$2.000"}],
-    HIJAK: [{m: "Khamelion", p: "$50.000"}, {m: "Ruston", p: "$14.000"}],
-    IMPONTE: [{m: "Arbiter GT", p: "$13.500"}, {m: "Nightshade", p: "$43.000"}, {m: "Phoenix", p: "$11.700"}, {m: "Ruiner ZZ-8", p: "$25.700"}],
-    INVETERO: [{m: "Coquette BlackFin", p: "$33.000"}, {m: "Coquette Classic", p: "$45.000"}],
-    KARIN: [{m: "190z", p: "$21.700"}, {m: "Asterope GZ", p: "$11.500"}, {m: "BeeJay XL", p: "$12.000"}, {m: "Boor", p: "$11.700"}, {m: "Calico GTF", p: "$25.000"}, {m: "Everon", p: "$16.500"}, {m: "Futo", p: "$11.000"}, {m: "Futo GTX", p: "$11.300"}, {m: "Previon", p: "$23.500"}, {m: "Sultan", p: "$12.500"}, {m: "Sultan RS", p: "$25.000"}, {m: "Sultan RS Classic", p: "$15.900"}],
-    LAMPADATI: [{m: "Casco", p: "$21.500"}, {m: "Cinquemila", p: "$57.400"}, {m: "Corsita", p: "$205.000"}, {m: "Felon", p: "$21.300"}, {m: "Komoda", p: "$58.000"}, {m: "Novak", p: "$47.000"}, {m: "Tigon", p: "$105.000"}, {m: "Viseris", p: "$40.000"}],
-    LCC: [{m: "Hexer", p: "$2.200"}, {m: "Sanctus", p: "$11.500"}],
-    MAIBATSU: [{m: "Manchez", p: "$1.800"}, {m: "Manchez Scout", p: "$11.800"}, {m: "MostroCiti", p: "$11.500"}, {m: "Mule", p: "$13.000"}, {m: "Mule Custom", p: "$14.000"}, {m: "Penumbra FF", p: "$21.700"}],
-    MAMMOTH: [{m: "Patriot", p: "$13.000"}],
-    MTL: [{m: "Brickade", p: "$37.000"}, {m: "Dune", p: "$35.000"}, {m: "Pounder Custom", p: "$35.000"}, {m: "Wastelander", p: "$25.000"}],
-    NAGASAKI: [{m: "Carbon RS", p: "$21.500"}, {m: "Chimera", p: "$13.000"}, {m: "Outlaw", p: "$15.000"}, {m: "Shinobi", p: "$39.000"}],
-    OBEY: [{m: "8F Drafter", p: "$42.000"}, {m: "10F", p: "$160.000"}, {m: "I-Wagen", p: "$56.500"}, {m: "Omins e-GT", p: "$68.000"}, {m: "Tailgater S", p: "$39.500"}],
-    OCELOT: [{m: "F620", p: "$31.600"}, {m: "Locust", p: "$24.000"}, {m: "Pariah", p: "$140.000"}, {m: "Virtue", p: "$239.000"}, {m: "XA-21", p: "$220.000"}],
-    PEGASSI: [{m: "Bati 801", p: "$32.500"}, {m: "Esskey", p: "$1.700"}, {m: "Faggio", p: "$1.200"}, {m: "Faggio Mod", p: "$1.150"}, {m: "FCR 1000", p: "$1.800"}, {m: "Ignus", p: "$240.000"}, {m: "Osiris", p: "$255.000"}, {m: "Reaper", p: "$200.000"}, {m: "Tempesta", p: "$140.000"}, {m: "Tezeract", p: "$200.000"}, {m: "Torero XO", p: "$250.000"}, {m: "Toros", p: "$133.000"}, {m: "Vortex", p: "$11.000"}, {m: "Zentorno", p: "$140.000"}],
-    PFISTER: [{m: "811", p: "$135.000"}, {m: "Astron", p: "$71.500"}, {m: "Comet Retro Custom", p: "$12.000"}, {m: "Comet S2", p: "$122.000"}, {m: "Growler", p: "$120.000"}, {m: "Neon", p: "$150.000"}],
-    PRINCIPE: [{m: "Deveste Eight", p: "$150.000"}, {m: "Diabolus", p: "$1.500"}],
-    PROGEN: [{m: "Emerus", p: "$180.000"}, {m: "Itali GTB", p: "$110.000"}, {m: "T20", p: "$190.000"}],
-    RUNE: [{m: "Cheburek", p: "$11.550"}],
-    SCHYSTER: [{m: "Deviant", p: "$23.200"}, {m: "Fusilade", p: "$1.750"}],
-    SHITZU: [{m: "Hakuchou", p: "$23.000"}, {m: "Hakuchou Drag", p: "$25.000"}, {m: "Vader", p: "$1.500"}],
-    TOUNDRA: [{m: "Panthere", p: "$26.500"}],
-    TRUFFADE: [{m: "Thrax", p: "$150.000"}, {m: "Z-Type", p: "$1.000.000"}],
-    VAPID: [{m: "Aleutian", p: "$17.000"}, {m: "Bobcat XL", p: "$11.200"}, {m: "Caracara 4x4", p: "$60.000"}, {m: "Dominator", p: "$11.150"}, {m: "Dominator GTT", p: "$33.000"}, {m: "Dominator GTX", p: "$48.000"}, {m: "Dominator ASP", p: "$23.400"}, {m: "Firebolt ASP", p: "$21.700"}, {m: "Minivan", p: "$1.700"}, {m: "Radius", p: "$700"}, {m: "Retinue Mk II", p: "$1.300"}, {m: "Riata", p: "$1.200"}, {m: "Sadler", p: "$1.400"}, {m: "Slamvan", p: "$12.000"}, {m: "Speedo Custom", p: "$4.000"}, {m: "Stainer", p: "$1.000"}, {m: "Uranos LozSpeed", p: "$900"}, {m: "Winky", p: "$500"}],
-    VULCAR: [{m: "Fagaola", p: "$1.700"}, {m: "Ingot", p: "$800"}],
-    VYSSER: [{m: "Neo", p: "$160.000"}],
-    WEENY: [{m: "Issi", p: "$11.500"}, {m: "Issi Classic", p: "$1.600"}, {m: "Issi Rally", p: "$12.200"}],
-    ÖVERFÖLD: [{m: "Autarch", p: "$180.000"}, {m: "Entity MT", p: "$200.000"}, {m: "Entity XF", p: "$165.000"}, {m: "Entity XXR", p: "$280.000"}, {m: "Tyrant", p: "$205.000"}, {m: "Zeno", p: "$190.000"}],
-    ÜBERMACHT: [{m: "Cypher", p: "$55.000"}, {m: "Niobe", p: "$150.000"}, {m: "Oracle", p: "$11.000"}, {m: "Oracle XS", p: "$11.200"}, {m: "Rebla GTS", p: "$78.000"}, {m: "Rhinehart", p: "$67.000"}, {m: "Sentinel GTS", p: "$78.000"}, {m: "Sentinel", p: "$1.500"}, {m: "Sentinel XS", p: "$1.400"}, {m: "Zion", p: "$2.950"}]
+    Hijak: [{m: "Khamelion", p: "$50.000"}, {m: "Ruston", p: "$14.000"}],
+    Imponte: [
+        {m: "Arbiter GT", p: "$13.500"}, {m: "Nightshade", p: "$43.000"},
+        {m: "Phoenix", p: "$11.700"}, {m: "Ruiner ZZ-8", p: "$25.700"}
+    ],
+    Invetero: [{m: "Coquette BlackFin", p: "$33.000"}, {m: "Coquette Classic", p: "$45.000"}],
+    Karin: [
+        {m: "190z", p: "$21.700"}, {m: "Asterope GZ", p: "$11.500"}, {m: "BeeJay XL", p: "$12.000"},
+        {m: "Boor", p: "$11.700"}, {m: "Calico GTF", p: "$25.000"}, {m: "Everon", p: "$16.500"},
+        {m: "Futo", p: "$11.000"}, {m: "Futo GTX", p: "$11.300"}, {m: "Previon", p: "$23.500"},
+        {m: "Sultan", p: "$12.500"}, {m: "Sultan RS", p: "$25.000"}, {m: "Sultan RS Classic", p: "$15.900"}
+    ],
+    Lampadati: [
+        {m: "Casco", p: "$21.500"}, {m: "Cinquemila", p: "$57.400"}, {m: "Corsita", p: "$205.000"},
+        {m: "Felon", p: "$21.300"}, {m: "Komoda", p: "$58.000"}, {m: "Novak", p: "$47.000"},
+        {m: "Tigon", p: "$105.000"}, {m: "Viseris", p: "$40.000"}
+    ],
+    LCC: [{m: "Hexer (Moto)", p: "$2.200"}, {m: "Sanctus (Moto)", p: "$11.500"}],
+    Maibatsu: [
+        {m: "Manchez", p: "$1.800"}, {m: "Manchez Scout", p: "$11.800"}, {m: "MostroCiti", p: "$11.500"},
+        {m: "Mule", p: "$13.000"}, {m: "Mule Custom", p: "$14.000"}, {m: "Penumbra FF", p: "$21.700"}
+    ],
+    Mammoth: [{m: "Patriot", p: "$13.000"}],
+    MTL: [
+        {m: "Brickade", p: "$37.000"}, {m: "Dune", p: "$35.000"},
+        {m: "Pounder Custom", p: "$35.000"}, {m: "Wastelander", p: "$25.000"}
+    ],
+    Nagasaki: [
+        {m: "Carbon RS (Moto)", p: "$21.500"}, {m: "Chimera (Moto)", p: "$13.000"},
+        {m: "Outlaw", p: "$15.000"}, {m: "Shinobi (Moto)", p: "$39.000"}
+    ],
+    Obey: [
+        {m: "8F Drafter", p: "$42.000"}, {m: "10F", p: "$160.000"}, {m: "I-Wagen", p: "$56.500"},
+        {m: "Omnis e-GT", p: "$68.000"}, {m: "Tailgater S", p: "$39.500"}
+    ],
+    Ocelot: [
+        {m: "F620", p: "$31.600"}, {m: "Locust", p: "$24.000"}, {m: "Pariah", p: "$140.000"},
+        {m: "Virtue", p: "$239.000"}, {m: "XA-21", p: "$220.000"}
+    ],
+    Pegassi: [
+        {m: "Bati 801", p: "$32.500"}, {m: "Esskey", p: "$1.700"}, {m: "Faggio", p: "$1.200"},
+        {m: "Faggio Mod", p: "$1.150"}, {m: "FCR 1000", p: "$1.800"}, {m: "Ignus", p: "$240.000"},
+        {m: "Osiris", p: "$255.000"}, {m: "Reaper", p: "$200.000"}, {m: "Tempesta", p: "$140.000"},
+        {m: "Tezeract", p: "$200.000"}, {m: "Torero XO", p: "$250.000"}, {m: "Toros", p: "$133.000"},
+        {m: "Vortex", p: "$11.000"}, {m: "Zentorno", p: "$140.000"}
+    ],
+    Pfister: [
+        {m: "811", p: "$135.000"}, {m: "Astron", p: "$71.500"}, {m: "Comet Retro Custom", p: "$12.000"},
+        {m: "Comet S2", p: "$122.000"}, {m: "Growler", p: "$120.000"}, {m: "Neon", p: "$150.000"}
+    ],
+    Principe: [{m: "Deveste Eight", p: "$150.000"}, {m: "Diabolus (Moto)", p: "$1.500"}],
+    Progen: [{m: "Emerus", p: "$180.000"}, {m: "Itali GTB", p: "$110.000"}, {m: "T20", p: "$190.000"}],
+    Rune: [{m: "Cheburek", p: "$11.550"}],
+    Schyster: [{m: "Deviant", p: "$23.200"}, {m: "Fusilade", p: "$1.750"}],
+    Shitzu: [{m: "Hakuchou (Moto)", p: "$23.000"}, {m: "Hakuchou Drag", p: "$25.000"}, {m: "Vader (Moto)", p: "$1.500"}],
+    Toundra: [{m: "Panthere", p: "$26.500"}],
+    Truffade: [{m: "Thrax", p: "$150.000"}, {m: "Z-Type", p: "$1.000.000"}],
+    Vapid: [
+        {m: "Aleutian", p: "$17.000"}, {m: "Bobcat XL", p: "$11.200"}, {m: "Caracara 4x4", p: "$60.000"},
+        {m: "Dominator", p: "$11.150"}, {m: "Dominator GTT", p: "$33.000"}, {m: "Dominator GTX", p: "$48.000"},
+        {m: "Dominator ASP", p: "$23.400"}, {m: "Firebolt ASP", p: "$21.700"}, {m: "Minivan", p: "$1.700"},
+        {m: "Radius", p: "$700"}, {m: "Retinue Mk II", p: "$1.300"}, {m: "Riata", p: "$1.200"},
+        {m: "Sadler", p: "$1.400"}, {m: "Slamvan", p: "$12.000"}, {m: "Speedo Custom", p: "$4.000"},
+        {m: "Stainer", p: "$1.000"}, {m: "Uranos LozSpeed", p: "$900"}, {m: "Winky", p: "$500"}
+    ],
+    Vulcar: [{m: "Fagaola", p: "$1.700"}, {m: "Ingot", p: "$800"}],
+    Vysser: [{m: "Neo", p: "$160.000"}],
+    Weeny: [{m: "Issi", p: "$11.500"}, {m: "Issi Classic", p: "$1.600"}, {m: "Issi Rally", p: "$12.200"}],
+    Overflod: [
+        {m: "Autarch", p: "$180.000"}, {m: "Entity MT", p: "$200.000"}, {m: "Entity XF", p: "$165.000"},
+        {m: "Entity XXR", p: "$280.000"}, {m: "Tyrant", p: "$205.000"}, {m: "Zeno", p: "$190.000"}
+    ],
+    Ubermacht: [
+        {m: "Cypher", p: "$55.000"}, {m: "Niobe", p: "$150.000"}, {m: "Oracle", p: "$11.000"},
+        {m: "Oracle XS", p: "$11.200"}, {m: "Rebla GTS", p: "$78.000"}, {m: "Rhinehart", p: "$67.000"},
+        {m: "Sentinel GTS", p: "$78.000"}, {m: "Sentinel", p: "$1.500"}, {m: "Sentinel XS", p: "$1.400"},
+        {m: "Zion", p: "$2.950"}
+    ]
 };
-
-const grid = document.getElementById('mainGrid');
-const backBtn = document.getElementById('backBtn');
-const searchInput = document.getElementById('searchInput');
 
 function openModal(id) { document.getElementById('modal-' + id).style.display = 'flex'; }
 function closeModals() { document.querySelectorAll('.modal').forEach(m => m.style.display = 'none'); }
@@ -338,14 +449,18 @@ function animateOnScroll() {
 }
 window.addEventListener('scroll', animateOnScroll);
 
+const grid = document.getElementById('mainGrid');
+const backBtn = document.getElementById('backBtn');
+const searchInput = document.getElementById('searchInput');
+
 function showBrands() {
     grid.innerHTML = '';
     backBtn.style.display = 'none';
-    searchInput.value = '';
+    searchInput.value = ''; // Reset barra di ricerca quando si torna ai brand
     Object.keys(carData).sort().forEach(brand => {
         const card = document.createElement('div');
         card.className = 'card';
-        card.innerHTML = `<span>MARCHIO</span><h3>${brand}</h3><p style="color:var(--gold); font-size:0.55rem; margin-top:10px; font-weight:600;">${carData[brand].length} MODELLI</p>`;
+        card.innerHTML = `<span>MANIFATTURA</span><h3>${brand}</h3><p style="font-size: 0.5rem; color: var(--gold); margin-top: 5px;">${carData[brand].length} MODELLI</p>`;
         card.onclick = () => showCars(brand);
         grid.appendChild(card);
     });
@@ -355,18 +470,20 @@ function showBrands() {
 function showCars(brand) {
     grid.innerHTML = '';
     backBtn.style.display = 'inline-block';
-    carData[brand].forEach(item => {
+    carData[brand].sort((a, b) => a.m.localeCompare(b.m)).forEach(item => {
         const card = document.createElement('div');
         card.className = 'card';
-        card.innerHTML = `<span>${brand}</span><h3>${item.m}</h3><div class="price">${item.p}</div>`;
+        card.innerHTML = `<span>${brand.toUpperCase()}</span><h3>${item.m}</h3><span class="price">${item.p}</span>`;
         grid.appendChild(card);
     });
-    window.scrollTo({top: document.querySelector('.catalogue-section').offsetTop - 100, behavior: 'smooth'});
+    window.scrollTo(0,0);
     setTimeout(animateOnScroll, 100);
 }
 
+// LOGICA DI RICERCA INTEGRATA
 function handleSearch() {
     const query = searchInput.value.toLowerCase().trim();
+    
     if (query === "") {
         showBrands();
         return;
@@ -375,27 +492,30 @@ function handleSearch() {
     grid.innerHTML = '';
     backBtn.style.display = 'inline-block'; // Mostra il tasto back per resettare la ricerca
 
-    let resultsFound = false;
+    let found = false;
     Object.keys(carData).forEach(brand => {
         carData[brand].forEach(item => {
+            // Cerca sia nel marchio che nel modello
             if (item.m.toLowerCase().includes(query) || brand.toLowerCase().includes(query)) {
                 const card = document.createElement('div');
                 card.className = 'card';
-                card.innerHTML = `<span>${brand}</span><h3>${item.m}</h3><div class="price">${item.p}</div>`;
+                card.innerHTML = `<span>${brand.toUpperCase()}</span><h3>${item.m}</h3><span class="price">${item.p}</span>`;
                 grid.appendChild(card);
-                resultsFound = true;
+                found = true;
             }
         });
     });
 
-    if (!resultsFound) {
-        grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #555; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Nessun modello trovato</div>';
+    if (!found) {
+        grid.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding: 50px; opacity:0.3; letter-spacing: 2px;">NESSUN RISULTATO TROVATO</div>';
     }
     
+    // Attiva le animazioni per le nuove card trovate
     setTimeout(animateOnScroll, 50);
 }
 
 showBrands();
 </script>
+
 </body>
 </html>
